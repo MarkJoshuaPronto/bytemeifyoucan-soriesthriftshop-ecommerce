@@ -13,7 +13,7 @@ class ProfileSettings extends Controller
 {
     public function index()
     {
-        return view('user.profile_settings');
+        return view('profile');
     }
 
     public function updateProfile(Request $request, $id)
@@ -55,22 +55,20 @@ class ProfileSettings extends Controller
 
     public function deleteAccount($id)
     {
-    try {
-        $user = User::findOrFail($id);
+        try {
+            $user = User::findOrFail($id);
 
-        // Delete associated orders
-        OrderModel::where('user_id', $id)->delete();
+            // Delete associated orders
+            OrderModel::where('user_id', $id)->delete();
 
-        // Delete the user account
-        $user->delete();
+            // Delete the user account
+            $user->delete();
 
-        Auth::logout();
+            Auth::logout();
 
-        return redirect('/')->with('success', 'Account deleted successfully');
-    } catch (\Exception $e) {
-        return redirect()->back()->with('error', 'Failed to delete account: ' . $e->getMessage());
+            return redirect('/')->with('success', 'Account deleted successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to delete account: ' . $e->getMessage());
+        }
     }
-    }
-
-
 }

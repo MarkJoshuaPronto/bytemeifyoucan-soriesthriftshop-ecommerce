@@ -10,7 +10,7 @@
                   <h1>User List</h1>
                 </div>
                 <div class="col-sm-6" style="text-align: right;">
-                    <a href="{{ url('admin/user/add') }}" class="btn btn-primary">Add New Admin</a>
+                    <a href="{{ url('admin/user/add') }}" class="btn btn-primary">Add New User</a>
                 </div>
               </div>
             </div>

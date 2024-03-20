@@ -16,7 +16,7 @@
                         <ul>
                             <li style="margin-top: 20px;"><a href="{{ url('about') }}" style="font-size: 15px;">About Us</a></li>
                             @auth
-                                <li style="margin-top: 20px;"><a href="{{ url('profile') }}" style="font-size: 15px;"><i class="icon-user" style="font-size: 20px;"></i>Profile</a></li>
+                            <li style="margin-top: 20px;"><a href="{{ route('profile') }}" style="font-size: 15px;"><i class="icon-user" style="font-size: 20px;"></i>Profile</a></li>
                             @else
                                 <li style="margin-top: 20px;"><a href="{{ url('login') }}" style="font-size: 15px;"><i class="icon-user" style="font-size: 20px;"></i></i>Login</a></li>
                             @endauth

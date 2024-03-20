@@ -147,4 +147,6 @@ Route::post('get_filter_product_ajax', [ProductFront::class, 'getFilterProductAj
 Route::get('{category?}/{subcategory?}', [ProductFront::class, 'getCategory']);
 Route::delete('/place-order', [OrderController::class, 'add'])->name('place-order');
 Route::delete('/cancel-order/{id}', [OrderController::class, 'cancelOrder'])->name('cancel.order');
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+
 

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Cart;
-use Stripe\Climate\Order;
 use App\Models\OrderModel;
 use Illuminate\Http\Request;
 
@@ -12,7 +11,7 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = Order::all(); // Retrieve all orders from the database
+        $orders = OrderModel::all();
         return view('user.orders.index', compact('orders'));
     }
 

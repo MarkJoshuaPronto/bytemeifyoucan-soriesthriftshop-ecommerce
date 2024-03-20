@@ -100,7 +100,7 @@
 
                             <div class="tab-pane fade" id="tab-account" role="tabpanel" aria-labelledby="tab-account-link">
                                 <form method="POST" action="{{ route('update.profile', ['id' => Auth::user()->id]) }}">
-                                    @csrf
+                                    {{ csrf_field() }}
                                     @method('POST')
 
                                     <label>Full Name *</label>
@@ -121,7 +121,7 @@
                                 <hr>
 
                                 <form method="POST" action="{{ route('update.password', ['id' => Auth::user()->id]) }}">
-                                    @csrf
+                                    {{ csrf_field() }}
                                     @method('POST')
 
                                     <label>Current password *</label>
