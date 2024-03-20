@@ -16,6 +16,31 @@ class AdminController extends Controller
         $data['header_title'] = 'Orders';
         return view('admin.order.list', $data);
     }
+
+    public function cancelApproval($id)
+    {
+    $order = OrderModel::findOrFail($id);
+
+    // Check if the order is already approved
+    if ($order->status !== 'approved') {
+        return redirect()->back()->with('error', 'Order is not approved.');
+    }
+
+    // Update the status to "pending" or "cancelled"
+    $order->status = 'pending'; // or 'cancelled', depending on your logic
+    $order->save();
+
+    return redirect()->back()->with('success', 'Order approval cancelled successfully.');
+    }
+
+    public function deleteOrder($id)
+    {
+    $order = OrderModel::findOrFail($id);
+    $order->delete();
+
+    return redirect()->back()->with('success', 'Order deleted successfully.');
+    }
+
     public function approve($id)
     {
         $order = OrderModel::findOrFail($id);

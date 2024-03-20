@@ -48,6 +48,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('admin/order/list', [AdminController::class, 'orderList']);
     Route::get('admin/order/approve/{id}', [AdminController::class, 'approve'])->name('admin.order.approve');
     Route::delete('admin/order/cancel-approval/{id}', [AdminController::class, 'cancelApproval'])->name('cancel.approval');
+    Route::delete('admin/order/delete/{id}', [AdminController::class, 'deleteOrder'])->name('order.delete');
     Route::post('admin/admin/add', [AdminController::class, 'insert']);
     Route::get('admin/admin/edit/{id}', [AdminController::class, 'edit']);
     Route::post('admin/admin/edit/{id}', [AdminController::class, 'update']);

@@ -53,13 +53,20 @@
                                         <td>
                                             @if($order->status === 'pending')
                                                 <a href="{{ route('admin.order.approve', ['id' => $order->id]) }}" class="btn btn-success">Approve</a>
-                                            @else
+                                            @elseif($order->status === 'approved')
                                                 <form action="{{ route('cancel.approval', ['id' => $order->id]) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger">Cancel Approval</button>
                                                 </form>
+                                            @elseif($order->status === 'cancelled')
+                                                <a href="{{ route('admin.order.approve', ['id' => $order->id]) }}" class="btn btn-success">Approve</a>
                                             @endif
+                                            <form action="{{ route('order.delete', ['id' => $order->id]) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger" style="margin-top: 10px;">Delete Order</button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
